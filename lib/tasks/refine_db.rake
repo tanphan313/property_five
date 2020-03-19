@@ -2,7 +2,7 @@ require 'json'
 
 namespace :refine_db do
   task create_admin: :environment do
-    Admin.create name: "Admin", email: "admin@properfive.com"
+    Admin.create name: "Admin", email: "admin@properfive.com", password: "Abc@12345"
   end
 
   task import_master_data: :environment do
