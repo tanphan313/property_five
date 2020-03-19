@@ -7,7 +7,7 @@ module AdminApi
     FORM_PARAMS = [:name, :email, :password].freeze
 
     def index
-      @creators = Creator.ransack(search_params).result.newest.page(params[:page])
+      @creators = Creator.ransack(search_params).result.newest.page(params[:page]).per(params[:per_page])
     end
 
     def show

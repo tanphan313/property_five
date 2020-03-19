@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     mount_devise_token_auth_for "Admin", at: "admin_auth",
       skip: [:invitations],
       controllers: {sessions: "admin_api/sessions"}
+
+    resources :creators
   end
 
   namespace :creator_api do

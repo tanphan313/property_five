@@ -7,7 +7,7 @@ module Supports
     }
 
     def index
-      @wards = Ward.ransack(search_params).result.order_by_slug.page(params[:page])
+      @wards = Ward.ransack(search_params).result.order_by_slug.page(params[:page]).per(params[:per_page])
       render json: {
         results: @wards,
         total_count: Ward.count

@@ -7,7 +7,7 @@ module Supports
     }
 
     def index
-      @districts = District.ransack(search_params).result.order_by_slug.page(params[:page])
+      @districts = District.ransack(search_params).result.order_by_slug.page(params[:page]).per(params[:per_page])
       render json: {
         results: @districts,
         total_count: District.count

@@ -6,7 +6,7 @@ module Supports
     }
 
     def index
-      @cities = City.ransack(search_params).result.order_by_slug.page(params[:page])
+      @cities = City.ransack(search_params).result.order_by_slug.page(params[:page]).per(params[:per_page])
       render json: {
         results: @cities,
         total_count: City.count
