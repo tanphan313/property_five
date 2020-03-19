@@ -277,7 +277,7 @@ GEM
     paper_trail (10.3.1)
       activerecord (>= 4.2)
       request_store (~> 1.1)
-    paperclip (5.0.0)
+    paperclip (5.2.0)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
       cocaine (~> 0.5.5)
@@ -511,7 +511,7 @@ DEPENDENCIES
   oauth2
   omniauth
   paper_trail
-  paperclip (~> 5.0.0)
+  paperclip (~> 5.2.0)
   parallel_tests
   passenger (>= 5.0.25)
   pg (~> 0.18)
