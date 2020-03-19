@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200318132359) do
+ActiveRecord::Schema.define(version: 20200319034307) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,44 @@ ActiveRecord::Schema.define(version: 20200318132359) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.string "variation"
+    t.string "name_with_type"
+    t.integer "code"
+    t.index ["code"], name: "index_cities_on_code"
+    t.index ["name"], name: "index_cities_on_name"
+  end
+
+  create_table "districts", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.string "variation"
+    t.string "name_with_type"
+    t.string "path"
+    t.string "path_with_type"
+    t.integer "code"
+    t.bigint "city_id"
+    t.index ["city_id"], name: "index_districts_on_city_id"
+    t.index ["code"], name: "index_districts_on_code"
+    t.index ["name"], name: "index_districts_on_name"
+  end
+
+  create_table "wards", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.string "variation"
+    t.string "name_with_type"
+    t.string "path"
+    t.string "path_with_type"
+    t.integer "code"
+    t.bigint "district_id"
+    t.index ["code"], name: "index_wards_on_code"
+    t.index ["district_id"], name: "index_wards_on_district_id"
+    t.index ["name"], name: "index_wards_on_name"
   end
 
 end
