@@ -1,0 +1,5 @@
+default_admin:
+  provider: email
+  encrypted_password: <%= Admin.new.send(:password_digest, "Pa$$word123") %>
+  name: "Admin"
+  email: "admin@proper.co"

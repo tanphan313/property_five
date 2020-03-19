@@ -1,6 +1,10 @@
 require 'json'
 
 namespace :refine_db do
+  task create_admin: :environment do
+    Admin.create name: "Admin", email: "admin@properfive.com"
+  end
+
   task import_master_data: :environment do
     City.destroy_all
 
