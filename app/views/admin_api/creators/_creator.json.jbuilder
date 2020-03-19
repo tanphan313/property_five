@@ -1,5 +1,5 @@
-json.id buyer.id
-json.uid buyer.uid
-json.email buyer.email
-json.provider buyer.provider
-json.name buyer.name
+json.id creator.id
+json.uid creator.uid
+json.email creator.email
+json.provider creator.provider
+json.name creator.name

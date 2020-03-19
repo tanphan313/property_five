@@ -1,0 +1,5 @@
+default_creator:
+  provider: email
+  encrypted_password: <%= Creator.new.send(:password_digest, "Pa$$word123") %>
+  name: "Creator"
+  email: "creator@proper.co"
