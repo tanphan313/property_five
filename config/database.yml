@@ -33,4 +33,6 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: property_five_production
+  username: admin
+  password: <%= ENV['PROPERTY_FIVE_DATABASE_PASSWORD'] %>
