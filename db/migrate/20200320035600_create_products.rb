@@ -28,8 +28,8 @@ class CreateProducts < ActiveRecord::Migration[5.1]
       t.integer :price_type, default: 0
       t.text :description
 
-      t.string :facade
-      t.string :entrance
+      t.float :facade
+      t.float :entrance
       t.integer :house_direction, default: 0
       t.integer :bacony_direction, default: 0
       t.integer :num_floor

@@ -1,0 +1,7 @@
+default_address:
+  city: ha_noi
+  district: ba_dinh
+  ward: cong_vi
+  product: default_product
+  street: "Fake street"
+  full_name: "Fake full name"

@@ -11,6 +11,10 @@ Rails.application.routes.draw do
     skip: [:invitations],
     controllers: {sessions: "creator_api/sessions"}
 
+  namespace :creator_api do
+    resources :products
+  end
+
   namespace :supports do
     resources :cities, only: :index
     resources :districts, only: :index

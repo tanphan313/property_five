@@ -7,4 +7,8 @@ class Address < ApplicationRecord
   with_options presence: true do
     validates :city_id, :district_id, :full_name
   end
+
+  delegate :name, to: :city, prefix: true
+  delegate :name, to: :district, prefix: true
+  delegate :name, to: :ward, prefix: true
 end
