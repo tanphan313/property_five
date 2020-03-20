@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  mount_devise_token_auth_for "Admin", at: "admin_auth", class_name: "Admin",
+  mount_devise_token_auth_for "Admin", at: "admin_api/admin_auth", class_name: "Admin",
     skip: [:invitations],
     controllers: {sessions: "admin_api/sessions"}
 
@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :creators
   end
 
-  mount_devise_token_auth_for "Creator", at: "creator_auth",
+  mount_devise_token_auth_for "Creator", at: "creator_api/creator_auth",
     skip: [:invitations],
     controllers: {sessions: "creator_api/sessions"}
 
