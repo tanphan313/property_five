@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200320133459) do
+ActiveRecord::Schema.define(version: 20200320143141) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,12 +96,6 @@ ActiveRecord::Schema.define(version: 20200320133459) do
     t.index ["name"], name: "index_districts_on_name"
   end
 
-  create_table "price_types", force: :cascade do |t|
-    t.bigint "product_id"
-    t.string "name", null: false
-    t.index ["product_id"], name: "index_price_types_on_product_id"
-  end
-
   create_table "product_categories", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -134,20 +128,13 @@ ActiveRecord::Schema.define(version: 20200320133459) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "product_types_price_types", force: :cascade do |t|
-    t.bigint "product_type_id"
-    t.bigint "price_type_id"
-    t.index ["price_type_id"], name: "index_product_types_price_types_on_price_type_id"
-    t.index ["product_type_id"], name: "index_product_types_price_types_on_product_type_id"
-  end
-
   create_table "products", force: :cascade do |t|
     t.bigint "product_type_id", null: false
     t.bigint "product_category_id", null: false
     t.string "title"
     t.string "project"
     t.float "acreage"
-    t.float "price"
+    t.bigint "price"
     t.text "description"
     t.float "facade"
     t.float "entrance"
@@ -166,9 +153,7 @@ ActiveRecord::Schema.define(version: 20200320133459) do
     t.datetime "updated_at", null: false
     t.string "editor_type"
     t.bigint "editor_id"
-    t.bigint "price_type_id"
     t.index ["editor_type", "editor_id"], name: "index_products_on_editor_type_and_editor_id"
-    t.index ["price_type_id"], name: "index_products_on_price_type_id"
     t.index ["product_category_id"], name: "index_products_on_product_category_id"
     t.index ["product_type_id"], name: "index_products_on_product_type_id"
   end

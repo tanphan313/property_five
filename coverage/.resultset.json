@@ -49,7 +49,7 @@
           null
         ]
       },
-      "/Users/tanphan/workspaces/property_five/app/models/price_type.rb": {
+      "/Users/tanphan/workspaces/property_five/app/models/product_category.rb": {
         "lines": [
           1,
           1,
@@ -66,19 +66,8 @@
           1,
           null,
           1,
-          3,
+          2,
           null,
-          null
-        ]
-      },
-      "/Users/tanphan/workspaces/property_five/app/models/product_category.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          1,
-          1,
-          1,
           null
         ]
       },
@@ -98,16 +87,6 @@
           1,
           1,
           1,
-          1,
-          1,
-          null
-        ]
-      },
-      "/Users/tanphan/workspaces/property_five/app/models/product_types_price_type.rb": {
-        "lines": [
-          1,
-          1,
-          1,
           null
         ]
       },
@@ -117,45 +96,44 @@
           1,
           1,
           1,
-          1,
           null,
           1,
           null,
           1,
           null,
           1,
-          1,
-          1,
-          null,
-          1,
-          1,
-          1,
-          1,
-          null,
-          1,
-          1,
-          null,
-          1,
-          1,
-          1,
-          1,
-          null,
-          1,
-          1,
-          null,
-          2,
-          null,
-          1,
-          2,
-          null,
-          null,
-          1,
-          1,
-          2,
           0,
           null,
           null,
+          1,
+          0,
           null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          2,
+          null,
+          1,
+          2,
+          null,
+          null,
+          1,
           1,
           2,
           0,
@@ -173,7 +151,7 @@
           null
         ]
       },
-      "/Users/tanphan/workspaces/property_five/app/controllers/admin_api/products_controller.rb": {
+      "/Users/tanphan/workspaces/property_five/app/controllers/creator_api/products_controller.rb": {
         "lines": [
           1,
           1,
@@ -248,7 +226,7 @@
           null
         ]
       },
-      "/Users/tanphan/workspaces/property_five/app/controllers/admin_api/application_controller.rb": {
+      "/Users/tanphan/workspaces/property_five/app/controllers/creator_api/application_controller.rb": {
         "lines": [
           1,
           1,
@@ -455,6 +433,8 @@
           null,
           null,
           null,
+          null,
+          null,
           4,
           null,
           null,
@@ -462,6 +442,6 @@
         ]
       }
     },
-    "timestamp": 1584706518
+    "timestamp": 1584715844
   }
 }

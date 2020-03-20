@@ -5,7 +5,6 @@ json.product_category_id presenter.product_category_id
 json.project presenter.project
 json.acreage presenter.acreage
 json.price presenter.price
-json.price_type_id presenter.price_type_id
 json.description presenter.description
 json.facade presenter.facade
 json.entrance presenter.entrance

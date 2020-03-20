@@ -8,12 +8,10 @@ module Supports
           {
             id: type.id,
             name: type.name,
-            category_ids: type.product_category_ids,
-            price_type_ids: type.price_type_ids
+            category_ids: type.product_category_ids
           }
         end,
         product_categories: ProductCategory.order_by_name.map{|cat| {id: cat.id, name: cat.name}},
-        price_types: PriceType.order_by_name.map{|type| {id: type.id, name: type.name}},
         house_directions: Product.house_directions.map{|key, _value| {name: key, id: key}},
         balcony_directions: Product.balcony_directions.map{|key, _value| {name: key, id: key}}
       }

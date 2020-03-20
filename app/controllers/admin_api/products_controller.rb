@@ -1,10 +1,21 @@
 module AdminApi
   class ProductsController < ApplicationController
     RANSACK_MAP_KEYS = {
-      title: :title_cont
+      title: :title_cont,
+      product_type_id: :product_type_id_eq,
+      product_category_id: :product_category_id_eq,
+      project: :project_cont,
+      house_direction: :house_direction_eq,
+      balcony_direction: :balcony_direction_eq,
+      num_floor: :num_floor_eq,
+      num_bedroom: :num_bedroom_eq,
+      num_toilet: :num_toilet_eq,
+      contact_email: :contact_email_eq,
+      contact_phone: :contact_phone_eq,
+      contact_mobile_phone: :contact_mobile_phone_eq,
     }
 
-    FORM_PARAMS = [:title, :product_type_id, :product_category_id, :project, :acreage, :price, :price_type_id,
+    FORM_PARAMS = [:title, :product_type_id, :product_category_id, :project, :acreage, :price,
       :description, :facade, :entrance, :house_direction, :balcony_direction, :num_floor, :num_bedroom, :num_toilet,
       :furniture, :contact_name, :contact_address, :contact_phone, :contact_mobile_phone, :contact_email,
       address_attributes: [:id, :city_id, :district_id, :ward_id, :street, :full_name],

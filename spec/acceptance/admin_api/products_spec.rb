@@ -41,7 +41,6 @@ resource "admin_api/products" do
     parameter :project, "String", scope: :product
     parameter :acreage, "String", scope: :product
     parameter :price, "String", scope: :product
-    parameter :price_type_id, "String", scope: :product
     parameter :description, "String", scope: :product
     parameter :facade, "String", scope: :product
     parameter :entrance, "String", scope: :product
@@ -80,7 +79,6 @@ resource "admin_api/products" do
       post "admin_api/products.json" do
         let(:default_product_type){product_types(:default_product_type)}
         let(:default_product_category){product_categories(:default_product_category)}
-        let(:default_price_type){price_types(:default_price_type)}
         let(:ha_noi){cities(:ha_noi)}
         let(:ba_dinh){districts(:ba_dinh)}
         let(:cong_vi){wards(:cong_vi)}
@@ -90,7 +88,6 @@ resource "admin_api/products" do
         let(:project){"String"}
         let(:acreage){30.8}
         let(:price){30.8}
-        let(:price_type_id){default_price_type.id}
         let(:product_type_id){default_product_type.id}
         let(:product_category_id){default_product_category.id}
         let(:description){"String"}
@@ -147,7 +144,6 @@ resource "admin_api/products" do
 
         let(:default_product_type){product_types(:default_product_type)}
         let(:default_product_category){product_categories(:default_product_category)}
-        let(:default_price_type){price_types(:default_price_type)}
         let(:ha_noi){cities(:ha_noi)}
         let(:ba_dinh){districts(:ba_dinh)}
         let(:cong_vi){wards(:cong_vi)}
@@ -157,7 +153,6 @@ resource "admin_api/products" do
         let(:project){"String"}
         let(:acreage){30.8}
         let(:price){30.8}
-        let(:price_type_id){default_price_type.id}
         let(:product_type_id){default_product_type.id}
         let(:product_category_id){default_product_category.id}
         let(:description){"String"}

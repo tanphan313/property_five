@@ -4,4 +4,3 @@ default_product:
   title: "Product title"
   product_type: default_product_type
   product_category: default_product_category
-  price_type: default_price_type

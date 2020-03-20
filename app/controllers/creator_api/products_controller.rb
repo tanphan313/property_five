@@ -4,7 +4,7 @@ module CreatorApi
       title: :title_cont
     }
 
-    FORM_PARAMS = [:title, :product_type_id, :product_category_id, :project, :acreage, :price, :price_type_id,
+    FORM_PARAMS = [:title, :product_type_id, :product_category_id, :project, :acreage, :price,
       :description, :facade, :entrance, :house_direction, :balcony_direction, :num_floor, :num_bedroom, :num_toilet,
       :furniture, :contact_name, :contact_address, :contact_phone, :contact_mobile_phone, :contact_email,
       address_attributes: [:id, :city_id, :district_id, :ward_id, :street, :full_name],
@@ -60,7 +60,7 @@ module CreatorApi
     end
 
     def product
-      @product ||= params[:id] ? Product.find(params[:id]) : Product.new
+      @product ||= params[:id] ? current_creator.products.find(params[:id]) : current_creator.products.build
     end
 
     def presenter

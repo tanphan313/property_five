@@ -56,10 +56,6 @@ namespace :refine_db do
       product_cat = ProductCategory.create name: name
       ProductCategoriesType.create product_type: sell_type, product_category: product_cat
     end
-    ["Triệu", "Tỷ", "Trăm nghìn/m2", "Triệu/m2"].each do |name|
-      price_type = PriceType.create name: name
-      ProductTypesPriceType.create product_type: sell_type, price_type: price_type
-    end
 
     rent_type = ProductType.find_by(name: "Nhà đất cho thuê")
     ["Cho thuê căn hộ chung cư", "Cho thuê nhà riêng", "Cho thuê nhà mặt phố", "Cho thuê nhà trọ, phòng trọ",
@@ -67,13 +63,5 @@ namespace :refine_db do
       product_cat = ProductCategory.create name: name
       ProductCategoriesType.create product_type: rent_type, product_category: product_cat
     end
-    ["Trăm nghìn/tháng", "Triệu/tháng", "Trăm nghìn/m2/tháng", "Triệu/m2/tháng", "Nghìn/m2/tháng"].each do |name|
-      price_type = PriceType.create name: name
-      ProductTypesPriceType.create product_type: rent_type, price_type: price_type
-    end
-
-    concurrent_type = PriceType.create name: "Thỏa thuận"
-    ProductTypesPriceType.create product_type: sell_type, price_type: concurrent_type
-    ProductTypesPriceType.create product_type: rent_type, price_type: concurrent_type
   end
 end
