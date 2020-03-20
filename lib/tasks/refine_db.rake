@@ -1,11 +1,10 @@
 require 'json'
 
 namespace :refine_db do
-  task create_admin: :environment do
-    Admin.create name: "Admin", email: "admin@properfive.com", password: "Abc@12345"
-  end
-
   task import_master_data: :environment do
+    Admin.create name: "Admin", email: "admin@properfive.com", password: "Abc@12345"
+
+    puts "Address master data"
     City.destroy_all
 
     city_file = File.read('db/json/city.json')
@@ -42,9 +41,8 @@ namespace :refine_db do
       end
     end
     puts "Finish importing #{Ward.count} wards"
-  end
 
-  task import_product_types_and_categories_and_price_types: :environment do
+    puts "Master data"
     ProductType.destroy_all
     ProductCategory.destroy_all
 
