@@ -119,7 +119,10 @@ ActiveRecord::Schema.define(version: 20200320073218) do
     t.bigint "product_id"
     t.string "description"
     t.boolean "master", default: false
-    t.string "attachment"
+    t.string "attachment_file_name"
+    t.string "attachment_content_type"
+    t.integer "attachment_file_size"
+    t.datetime "attachment_updated_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_product_images_on_product_id"

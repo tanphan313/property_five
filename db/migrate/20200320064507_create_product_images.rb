@@ -4,7 +4,7 @@ class CreateProductImages < ActiveRecord::Migration[5.1]
       t.references :product
       t.string :description
       t.boolean :master, default: false
-      t.string :attachment
+      t.attachment :attachment
 
       t.timestamps
     end
