@@ -5,7 +5,7 @@ class Address < ApplicationRecord
   belongs_to :product, optional: true
 
   with_options presence: true do
-    validates :city_id, :district_id
+    validates :city_id, :district_id, :street
   end
 
   delegate :name, to: :city, prefix: true
