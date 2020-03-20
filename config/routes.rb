@@ -23,4 +23,6 @@ Rails.application.routes.draw do
 
     resource :master_datas, only: :show
   end
+
+  resources :search, only: :index, as: "search"
 end

@@ -110,6 +110,7 @@ resource "creator_api/products" do
             city_id: ha_noi.id,
             district_id: ba_dinh.id,
             ward_id: cong_vi.id,
+            street: "String",
             full_name: "String"
           }
         end

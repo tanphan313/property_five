@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200320143141) do
+ActiveRecord::Schema.define(version: 20200320152131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -172,4 +172,35 @@ ActiveRecord::Schema.define(version: 20200320143141) do
     t.index ["name"], name: "index_wards_on_name"
   end
 
+
+  create_view "searches", sql_definition: <<-SQL
+      WITH addr AS (
+           SELECT addresses.id,
+              addresses.city_id,
+              addresses.district_id,
+              addresses.ward_id,
+              addresses.street,
+              addresses.full_name,
+              addresses.product_id,
+              addresses.created_at,
+              addresses.updated_at,
+              concat(c.name, ',', d.name, ',', w.name, ',', addresses.street) AS full_address
+             FROM (((addresses
+               LEFT JOIN cities c ON ((addresses.city_id = c.id)))
+               LEFT JOIN districts d ON ((addresses.city_id = d.city_id)))
+               LEFT JOIN wards w ON ((addresses.district_id = w.district_id)))
+          )
+   SELECT 'Product'::character varying AS searchable_type,
+      p.id AS searchable_id,
+      p.title,
+      p.product_type_id,
+      p.product_category_id,
+      p.price,
+      addr.city_id,
+      addr.district_id,
+      addr.ward_id,
+      ((((setweight(to_tsvector('english'::regconfig, (COALESCE(p.title, ' '::character varying))::text), 'A'::"char") || setweight(to_tsvector('english'::regconfig, COALESCE(p.description, ' '::text)), 'A'::"char")) || setweight(to_tsvector('english'::regconfig, (COALESCE(p.project, ' '::character varying))::text), 'B'::"char")) || setweight(to_tsvector('english'::regconfig, COALESCE(p.furniture, ' '::text)), 'B'::"char")) || setweight(to_tsvector('english'::regconfig, COALESCE(addr.full_address, ' '::text)), 'B'::"char")) AS document
+     FROM (products p
+       JOIN addr ON ((p.id = addr.product_id)));
+  SQL
 end
