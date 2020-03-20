@@ -11,6 +11,6 @@ class Product < ApplicationRecord
   validates :contact_phone, numericality: {only_integer: true}, allow_blank: true
   validates :facade, :entrance, numericality: {only_integer: true}, allow_blank: true
 
-  enum house_direction: %i(unselected north north_east east south_east south south_west west north_west)
-  enum bacony_direction: %i(unselected north north_east east south_east south south_west west north_west)
+  enum house_direction: %i(unselected north north_east east south_east south south_west west north_west), _suffix: true
+  enum bacony_direction: %i(unselected north north_east east south_east south south_west west north_west), _suffix: true
 end
