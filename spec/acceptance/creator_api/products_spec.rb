@@ -126,7 +126,6 @@ resource "creator_api/products" do
         example_request "create and return product with full information" do
           json = JSON.parse(response_body)
           expect(json).not_to be_empty
-          puts json
           expect(status).to eq(201)
         end
       end

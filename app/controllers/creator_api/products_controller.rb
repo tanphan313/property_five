@@ -24,7 +24,6 @@ module CreatorApi
     def create
       @product = current_creator.products.build form_params
       if @product.save
-        binding.pry
         render :create, status: :created
       else
         render json: {errors: @product.errors.full_messages}, status: :unprocessable_entity
