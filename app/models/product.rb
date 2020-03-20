@@ -18,7 +18,7 @@ class Product < ApplicationRecord
   validates :contact_email, format: {with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/}, allow_blank: true
 
   enum house_direction: %i(unselected north north_east east south_east south south_west west north_west), _suffix: true
-  enum bacony_direction: %i(unselected north north_east east south_east south south_west west north_west), _suffix: true
+  enum balcony_direction: %i(unselected north north_east east south_east south south_west west north_west), _suffix: true
 
   delegate :name, to: :product_type, prefix: true, allow_nil: true
   delegate :name, to: :product_category, prefix: true, allow_nil: true

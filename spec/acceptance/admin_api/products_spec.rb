@@ -46,7 +46,7 @@ resource "admin_api/products" do
     parameter :facade, "String", scope: :product
     parameter :entrance, "String", scope: :product
     parameter :house_direction, "String", scope: :product
-    parameter :bacony_direction, "String", scope: :product
+    parameter :balcony_direction, "String", scope: :product
     parameter :num_floor, "String", scope: :product
     parameter :num_bedroom, "String", scope: :product
     parameter :num_toilet, "String", scope: :product
@@ -97,7 +97,7 @@ resource "admin_api/products" do
         let(:facade){30.8}
         let(:entrance){30.8}
         let(:house_direction){"north"}
-        let(:bacony_direction){"north"}
+        let(:balcony_direction){"north"}
         let(:num_floor){1}
         let(:num_bedroom){1}
         let(:num_toilet){1}
@@ -164,7 +164,7 @@ resource "admin_api/products" do
         let(:facade){30.8}
         let(:entrance){30.8}
         let(:house_direction){"north"}
-        let(:bacony_direction){"north"}
+        let(:balcony_direction){"north"}
         let(:num_floor){1}
         let(:num_bedroom){1}
         let(:num_toilet){1}

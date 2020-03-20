@@ -31,7 +31,7 @@ class CreateProducts < ActiveRecord::Migration[5.1]
       t.float :facade
       t.float :entrance
       t.integer :house_direction, default: 0
-      t.integer :bacony_direction, default: 0
+      t.integer :balcony_direction, default: 0
       t.integer :num_floor
       t.integer :num_bedroom
       t.integer :num_toilet

@@ -15,7 +15,7 @@ module Supports
         product_categories: ProductCategory.order_by_name.map{|cat| {id: cat.id, name: cat.name}},
         price_types: PriceType.order_by_name.map{|type| {id: type.id, name: type.name}},
         house_directions: Product.house_directions.map{|key, _value| {name: key, id: key}},
-        bacony_directions: Product.bacony_directions.map{|key, _value| {name: key, id: key}}
+        balcony_directions: Product.balcony_directions.map{|key, _value| {name: key, id: key}}
       }
 
       render json: {master_data: @master_data}, status: :ok

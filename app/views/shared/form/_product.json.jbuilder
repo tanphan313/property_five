@@ -10,7 +10,7 @@ json.description presenter.description
 json.facade presenter.facade
 json.entrance presenter.entrance
 json.house_direction presenter.house_direction
-json.bacony_direction presenter.bacony_direction
+json.balcony_direction presenter.balcony_direction
 json.num_floor presenter.num_floor
 json.num_bedroom presenter.num_bedroom
 json.num_toilet presenter.num_toilet

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200320073218) do
+ActiveRecord::Schema.define(version: 20200320133459) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -152,7 +152,7 @@ ActiveRecord::Schema.define(version: 20200320073218) do
     t.float "facade"
     t.float "entrance"
     t.integer "house_direction", default: 0
-    t.integer "bacony_direction", default: 0
+    t.integer "balcony_direction", default: 0
     t.integer "num_floor"
     t.integer "num_bedroom"
     t.integer "num_toilet"
