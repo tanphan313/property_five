@@ -27,7 +27,7 @@ gem 'rack-cors'
 
 gem 'money-rails', '~>1'
 gem 'nokogiri', '~>1.8.1'
-gem "paperclip", "~> 5.0.0"
+gem "paperclip", "~> 5.2.0"
 gem 'carrierwave', '~> 1.0'
 gem 'cloudinary'
 gem 'mini_magick'
