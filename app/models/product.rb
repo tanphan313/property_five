@@ -33,7 +33,10 @@ class Product < ApplicationRecord
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :product_images, allow_destroy: true
 
-  scope :newest, -> {order(created_at: :desc)}
+  scope :newest, ->{order(created_at: :desc)}
+  scope :within_price_range, ->(price_range_params) do
+    where(price: price_range_params)
+  end
 
   def master_image
     product_images.where(master: true).first || product_images.first

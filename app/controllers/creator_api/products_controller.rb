@@ -1,8 +1,6 @@
 module CreatorApi
   class ProductsController < ApplicationController
-    RANSACK_MAP_KEYS = {
-      title: :title_cont
-    }
+    include AdminProductSearchable
 
     FORM_PARAMS = [:title, :product_type_id, :product_category_id, :project, :acreage, :price,
       :description, :facade, :entrance, :house_direction, :balcony_direction, :num_floor, :num_bedroom, :num_toilet,
@@ -11,7 +9,8 @@ module CreatorApi
       product_images_attributes: [:id, :_destroy, :attachment, :description, :master]]
 
     def index
-      @products = current_creator.products.ransack(search_params).result.newest.page(params[:page]).per(params[:per_page])
+      @products = current_creator.products.ransack(search_params).result.newest.within_price_range(price_range_params)
+        .page(params[:page]).per(params[:per_page])
       @presenters = @products.map do |product|
         ProductListingPresenter.new product
       end
@@ -51,10 +50,6 @@ module CreatorApi
     end
 
     private
-    def search_params
-      SearchParams.(params.fetch(:q, {}), RANSACK_MAP_KEYS)
-    end
-
     def form_params
       @form_params ||= params.require(:product).permit(FORM_PARAMS)
     end

@@ -7,7 +7,7 @@ resource "creator_api/products" do
   include_context "shared creator authentication"
 
   context "Index product" do
-    parameter :title, "product name", scope: :q
+    parameter :title, "product title", scope: :q
     
     context "Search" do
       get "/creator_api/products.json" do

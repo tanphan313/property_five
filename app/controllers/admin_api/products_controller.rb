@@ -1,19 +1,6 @@
 module AdminApi
   class ProductsController < ApplicationController
-    RANSACK_MAP_KEYS = {
-      title: :title_cont,
-      product_type_id: :product_type_id_eq,
-      product_category_id: :product_category_id_eq,
-      project: :project_cont,
-      house_direction: :house_direction_eq,
-      balcony_direction: :balcony_direction_eq,
-      num_floor: :num_floor_eq,
-      num_bedroom: :num_bedroom_eq,
-      num_toilet: :num_toilet_eq,
-      contact_email: :contact_email_eq,
-      contact_phone: :contact_phone_eq,
-      contact_mobile_phone: :contact_mobile_phone_eq,
-    }
+    include AdminProductSearchable
 
     FORM_PARAMS = [:title, :product_type_id, :product_category_id, :project, :acreage, :price,
       :description, :facade, :entrance, :house_direction, :balcony_direction, :num_floor, :num_bedroom, :num_toilet,
@@ -22,7 +9,8 @@ module AdminApi
       product_images_attributes: [:id, :_destroy, :attachment, :description, :master]]
 
     def index
-      @products = Product.ransack(search_params).result.newest.page(params[:page]).per(params[:per_page])
+      @products = Product.ransack(search_params).result.newest.within_price_range(price_range_params)
+        .page(params[:page]).per(params[:per_page])
       @presenters = @products.map do |product|
         ProductListingPresenter.new product
       end
@@ -62,16 +50,12 @@ module AdminApi
     end
 
     private
-    def search_params
-      SearchParams.(params.fetch(:q, {}), RANSACK_MAP_KEYS)
-    end
-
     def form_params
       @form_params ||= params.require(:product).permit(FORM_PARAMS)
     end
 
     def product
-      @product ||= params[:id] ? Product.find(params[:id]) : Product.new
+      @product ||= params[:id] ? Product.find(params[:id]) : current_admin.products.build
     end
 
     def presenter
