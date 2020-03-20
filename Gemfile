@@ -29,6 +29,7 @@ gem 'money-rails', '~>1'
 gem 'nokogiri', '~>1.8.1'
 gem "paperclip", "~> 5.0.0"
 gem 'carrierwave', '~> 1.0'
+gem 'cloudinary'
 gem 'mini_magick'
 gem "fog-aws"
 gem 'json', '~> 1.8', '< 3'

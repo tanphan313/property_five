@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200319075802) do
+ActiveRecord::Schema.define(version: 20200320035600) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.bigint "city_id", null: false
+    t.bigint "district_id", null: false
+    t.bigint "ward_id"
+    t.string "street"
+    t.string "full_name"
+    t.bigint "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_addresses_on_city_id"
+    t.index ["district_id"], name: "index_addresses_on_district_id"
+    t.index ["product_id"], name: "index_addresses_on_product_id"
+    t.index ["ward_id"], name: "index_addresses_on_ward_id"
+  end
 
   create_table "admins", force: :cascade do |t|
     t.string "name"
@@ -79,6 +94,53 @@ ActiveRecord::Schema.define(version: 20200319075802) do
     t.index ["city_id"], name: "index_districts_on_city_id"
     t.index ["code"], name: "index_districts_on_code"
     t.index ["name"], name: "index_districts_on_name"
+  end
+
+  create_table "product_categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "product_categories_types", force: :cascade do |t|
+    t.bigint "product_type_id", null: false
+    t.bigint "product_category_id", null: false
+    t.index ["product_category_id"], name: "index_product_categories_types_on_product_category_id"
+    t.index ["product_type_id"], name: "index_product_categories_types_on_product_type_id"
+  end
+
+  create_table "product_types", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.bigint "product_type_id", null: false
+    t.bigint "product_category_id", null: false
+    t.string "title"
+    t.string "project"
+    t.float "acreage"
+    t.float "price"
+    t.integer "price_type", default: 0
+    t.text "description"
+    t.string "facade"
+    t.string "entrance"
+    t.integer "house_direction", default: 0
+    t.integer "bacony_direction", default: 0
+    t.integer "num_floor"
+    t.integer "num_bedroom"
+    t.integer "num_toilet"
+    t.text "furniture"
+    t.string "contact_name"
+    t.string "contact_address"
+    t.string "contact_phone"
+    t.string "contact_mobile_phone"
+    t.string "contact_email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_category_id"], name: "index_products_on_product_category_id"
+    t.index ["product_type_id"], name: "index_products_on_product_type_id"
   end
 
   create_table "wards", force: :cascade do |t|

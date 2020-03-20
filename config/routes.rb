@@ -1,17 +1,15 @@
 Rails.application.routes.draw do
-  namespace :admin_api do
-    mount_devise_token_auth_for "Admin", at: "admin_auth",
-      skip: [:invitations],
-      controllers: {sessions: "admin_api/sessions"}
+  mount_devise_token_auth_for "Admin", at: "admin_auth", class_name: "Admin",
+    skip: [:invitations],
+    controllers: {sessions: "admin_api/sessions"}
 
+  namespace :admin_api do
     resources :creators
   end
 
-  namespace :creator_api do
-    mount_devise_token_auth_for "Creator", at: "creator_auth",
-      skip: [:invitations],
-      controllers: {sessions: "creator_api/sessions"}
-  end
+  mount_devise_token_auth_for "Creator", at: "creator_auth",
+    skip: [:invitations],
+    controllers: {sessions: "creator_api/sessions"}
 
   namespace :supports do
     resources :cities, only: :index
