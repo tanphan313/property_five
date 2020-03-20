@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   namespace :admin_api do
     resources :creators
+    resources :products
   end
 
   mount_devise_token_auth_for "Creator", at: "creator_api/creator_auth",
