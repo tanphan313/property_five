@@ -2,6 +2,8 @@ module Supports
   class MasterDatasController < ApplicationController
     def show
       @master_data = {
+        cities: City.order_by_slug.map{|city| city.attributes},
+        districts: District.order_by_slug.map{|district| district.attributes},
         product_types: ProductType.order_by_name.map do |type|
           {
             id: type.id,
