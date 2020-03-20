@@ -45,7 +45,9 @@ module AdminApi
     end
 
     def form_params
-      @form_params ||= params.require(:creator).permit(FORM_PARAMS)
+      @form_params ||= params.require(:creator).permit(FORM_PARAMS).tap do |p|
+        p[:password] = nil unless p[:password].present?
+      end
     end
 
     def creator

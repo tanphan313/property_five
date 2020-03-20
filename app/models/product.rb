@@ -1,8 +1,11 @@
 class Product < ApplicationRecord
   belongs_to :product_type
   belongs_to :product_category
+  belongs_to :editor, polymorphic: true
 
   has_one :address
+
+  has_many :product_images, dependent: :destroy
 
   with_options presence: true do
     validates :title, :product_type_id, :product_category_id, :description, :contact_mobile_phone

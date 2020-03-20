@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200320035600) do
+ActiveRecord::Schema.define(version: 20200320064507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -109,6 +109,19 @@ ActiveRecord::Schema.define(version: 20200320035600) do
     t.index ["product_type_id"], name: "index_product_categories_types_on_product_type_id"
   end
 
+  create_table "product_images", force: :cascade do |t|
+    t.bigint "product_id"
+    t.string "description"
+    t.boolean "master", default: false
+    t.string "attachment_file_name"
+    t.string "attachment_content_type"
+    t.integer "attachment_file_size"
+    t.datetime "attachment_updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_product_images_on_product_id"
+  end
+
   create_table "product_types", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -139,6 +152,9 @@ ActiveRecord::Schema.define(version: 20200320035600) do
     t.string "contact_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "editor_type"
+    t.bigint "editor_id"
+    t.index ["editor_type", "editor_id"], name: "index_products_on_editor_type_and_editor_id"
     t.index ["product_category_id"], name: "index_products_on_product_category_id"
     t.index ["product_type_id"], name: "index_products_on_product_type_id"
   end

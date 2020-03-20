@@ -5,6 +5,8 @@ class Admin < ApplicationRecord
 
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :products, as: :editor
+
   validates :name, presence: true
 
   def confirmed?

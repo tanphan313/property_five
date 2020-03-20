@@ -1,0 +1,12 @@
+development:
+  cloud_name: "tanphan"
+  api_key: "727857637152645"
+  api_secret: "q5TrOFatwkH7RG8dZyY7lIwLvMs"
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: "tanphan"
+  api_key: "727857637152645"
+  api_secret: "q5TrOFatwkH7RG8dZyY7lIwLvMs"
+  enhance_image_tag: true
+  static_image_support: true
