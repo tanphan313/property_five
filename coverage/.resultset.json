@@ -133,7 +133,7 @@
           null,
           null,
           1,
-          2,
+          4,
           null,
           null,
           1,
@@ -299,7 +299,7 @@
           null,
           1,
           null,
-          3,
+          5,
           null,
           1,
           2,
@@ -387,11 +387,11 @@
           1,
           null,
           1,
-          1,
+          2,
           null,
           null,
           1,
-          1,
+          2,
           0,
           null,
           null,
@@ -414,13 +414,13 @@
           1,
           null,
           1,
-          1,
-          1,
+          2,
+          2,
           null,
           null,
           1,
-          1,
-          1,
+          2,
+          2,
           null,
           null
         ]
@@ -429,17 +429,27 @@
         "lines": [
           1,
           1,
-          2,
+          4,
           0,
           null,
-          2,
-          2,
+          4,
+          4,
           null,
+          null,
+          null
+        ]
+      },
+      "/Users/tanphan/workspaces/property_five/app/controllers/products_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
           null,
           null
         ]
       }
     },
-    "timestamp": 1584807897
+    "timestamp": 1584808013
   }
 }
