@@ -5,6 +5,9 @@ class Search < ApplicationRecord
   belongs_to :searchable, polymorphic: true
 
   scope :score_sort, -> {order("score DESC")}
+  scope :within_price_range, ->(price_range_params) do
+    where(price: price_range_params)
+  end
 
   class << self
     def normalize(query)

@@ -14,7 +14,7 @@ class SearchController < ApplicationController
     else
       Search
     end
-    @searches = search_scope.ransack(search_params).result
+    @searches = search_scope.ransack(search_params).result.within_price_range(price_range_params)
       .includes(searchable: :product_images).page(params[:page]).per(params[:per_page])
     @presenters = @searches.map {|search| ProductPresenter.new(search.searchable)}
   end
@@ -33,5 +33,11 @@ class SearchController < ApplicationController
     direction = params[:direction] ? params[:direction] : "asc"
     attr = "#{sort} #{direction}"
     {sorts: attr}
+  end
+
+  def price_range_params
+    min = params[:min_price] || 0
+    max = params[:max_price] || 9223372036854775807
+    min..max
   end
 end
