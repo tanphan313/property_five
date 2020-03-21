@@ -19,11 +19,6 @@ class SearchController < ApplicationController
     @presenters = @searches.map {|search| ProductPresenter.new(search.searchable)}
   end
 
-  def show
-    product = Product.find(params[:id])
-    @presenter = ProductPresenter.new product
-  end
-
   private
   def search_params
     filter_params.merge(sort_params)
