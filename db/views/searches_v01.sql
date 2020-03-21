@@ -23,4 +23,4 @@ SELECT
         as document
   FROM
     products p
-    JOIN addr ON p.id = addr.product_id;
+    LEFT OUTER JOIN addr ON p.id = addr.product_id;

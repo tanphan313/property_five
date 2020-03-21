@@ -201,6 +201,6 @@ ActiveRecord::Schema.define(version: 20200320152131) do
       addr.ward_id,
       ((((setweight(to_tsvector('english'::regconfig, (COALESCE(p.title, ' '::character varying))::text), 'A'::"char") || setweight(to_tsvector('english'::regconfig, COALESCE(p.description, ' '::text)), 'A'::"char")) || setweight(to_tsvector('english'::regconfig, (COALESCE(p.project, ' '::character varying))::text), 'B'::"char")) || setweight(to_tsvector('english'::regconfig, COALESCE(p.furniture, ' '::text)), 'B'::"char")) || setweight(to_tsvector('english'::regconfig, COALESCE(addr.full_address, ' '::text)), 'B'::"char")) AS document
      FROM (products p
-       JOIN addr ON ((p.id = addr.product_id)));
+       LEFT JOIN addr ON ((p.id = addr.product_id)));
   SQL
 end
