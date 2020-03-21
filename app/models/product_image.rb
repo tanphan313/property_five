@@ -5,6 +5,10 @@ class ProductImage < ApplicationRecord
 
   belongs_to :product, optional: true
 
+  validates :attachment, presence: true
+
+  scope :oldest, ->{order created_at: :asc}
+
   IMAGE_STYLES.each do |image_style|
     define_method("#{image_style}_url") do
       attachment.url(image_style)

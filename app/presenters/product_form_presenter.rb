@@ -14,7 +14,7 @@ class ProductFormPresenter
 
   def product_images_attributes
     return [] unless product_images.present?
-    product_images.map do |img|
+    product_images.oldest.map do |img|
       {
         id: img.id,
         description: img.description,

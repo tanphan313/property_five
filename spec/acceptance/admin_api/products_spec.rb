@@ -55,6 +55,7 @@ resource "admin_api/products" do
     parameter :contact_phone, "String", scope: :product
     parameter :contact_mobile_phone, "String", scope: :product
     parameter :contact_email, "String", scope: :product
+    parameter :product_image_ids, "String", scope: :product
 
     parameter :address_attributes, "String", scope: :product
     parameter :id, "String", scope: :address_attributes
@@ -104,6 +105,7 @@ resource "admin_api/products" do
         let(:contact_phone){"0987654321"}
         let(:contact_mobile_phone){"0987654321"}
         let(:contact_email){"contact@gmail.com"}
+        let(:product_image_ids){[]}
 
         let(:address_attributes) do
           {
@@ -115,17 +117,17 @@ resource "admin_api/products" do
           }
         end
 
-        let(:product_images_attributes) do
-          [
-            {
-              master: true,
-              attachment: Rack::Test::UploadedFile.new(image, "image/jpg")
-            },
-            {
-              attachment: Rack::Test::UploadedFile.new(image, "image/jpg")
-            }
-          ]
-        end
+        #let(:product_images_attributes) do
+        #  [
+        #    {
+        #      master: true,
+        #      attachment: Rack::Test::UploadedFile.new(image, "image/jpg")
+        #    },
+        #    {
+        #      attachment: Rack::Test::UploadedFile.new(image, "image/jpg")
+        #    }
+        #  ]
+        #end
 
         example_request "Create product" do
           json = JSON.parse(response_body)

@@ -9,7 +9,7 @@ class ProductPresenter
 
   def image_urls
     return [] unless product_images.present?
-    product_images.map do |img|
+    product_images.oldest.map do |img|
       {
         small: Utils.full_asset_url(img.small_url),
         medium: Utils.full_asset_url(img.medium_url)

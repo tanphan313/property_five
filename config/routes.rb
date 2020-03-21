@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   namespace :admin_api do
     resources :creators
     resources :products
+    resources :product_images, only: [:create, :update, :destroy]
   end
 
   mount_devise_token_auth_for "Creator", at: "creator_api/creator_auth",
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
 
   namespace :creator_api do
     resources :products
+    resources :product_images, only: [:create, :update, :destroy]
   end
 
   namespace :supports do

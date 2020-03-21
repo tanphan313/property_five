@@ -39,7 +39,7 @@ class Product < ApplicationRecord
   end
 
   def master_image
-    product_images.where(master: true).first || product_images.first
+    product_images.where(master: true).first || product_images.oldest.first
   end
 
   private
