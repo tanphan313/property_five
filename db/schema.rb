@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200321105859) do
+ActiveRecord::Schema.define(version: 20200321110729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -199,7 +199,7 @@ ActiveRecord::Schema.define(version: 20200321105859) do
       addr.city_id,
       addr.district_id,
       addr.ward_id,
-      ((((setweight(to_tsvector('english'::regconfig, (COALESCE(p.title, ' '::character varying))::text), 'A'::"char") || setweight(to_tsvector('english'::regconfig, COALESCE(p.description, ' '::text)), 'A'::"char")) || setweight(to_tsvector('english'::regconfig, (COALESCE(p.project, ' '::character varying))::text), 'B'::"char")) || setweight(to_tsvector('english'::regconfig, COALESCE(p.furniture, ' '::text)), 'B'::"char")) || setweight(to_tsvector('english'::regconfig, COALESCE(addr.full_address, ' '::text)), 'B'::"char")) AS document
+      ((((setweight(to_tsvector('english'::regconfig, COALESCE(vn_unaccent((p.title)::text), ' '::text)), 'A'::"char") || setweight(to_tsvector('english'::regconfig, COALESCE(vn_unaccent(p.description), ' '::text)), 'A'::"char")) || setweight(to_tsvector('english'::regconfig, COALESCE(vn_unaccent((p.project)::text), ' '::text)), 'B'::"char")) || setweight(to_tsvector('english'::regconfig, COALESCE(vn_unaccent(p.furniture), ' '::text)), 'B'::"char")) || setweight(to_tsvector('english'::regconfig, COALESCE(vn_unaccent(addr.full_address), ' '::text)), 'B'::"char")) AS document
      FROM (products p
        LEFT JOIN addr ON ((p.id = addr.product_id)));
   SQL

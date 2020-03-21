@@ -12,7 +12,7 @@ class Search < ApplicationRecord
     end
 
     def fulltext_query term
-      "to_tsquery('english',  #{term} || ':*')"
+      "to_tsquery('english', vn_unaccent(#{term}) || ':*')"
     end
 
     def where_clause(search_term)
