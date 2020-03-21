@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200320152131) do
+ActiveRecord::Schema.define(version: 20200321105859) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -187,8 +187,8 @@ ActiveRecord::Schema.define(version: 20200320152131) do
               concat(c.name, ',', d.name, ',', w.name, ',', addresses.street) AS full_address
              FROM (((addresses
                LEFT JOIN cities c ON ((addresses.city_id = c.id)))
-               LEFT JOIN districts d ON ((addresses.city_id = d.city_id)))
-               LEFT JOIN wards w ON ((addresses.district_id = w.district_id)))
+               LEFT JOIN districts d ON ((addresses.district_id = d.id)))
+               LEFT JOIN wards w ON ((addresses.ward_id = w.id)))
           )
    SELECT 'Product'::character varying AS searchable_type,
       p.id AS searchable_id,
