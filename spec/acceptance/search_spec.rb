@@ -12,6 +12,7 @@ resource "Products" do
     parameter :district_id, "String", scope: :q
     parameter :ward_id, "String", scope: :q
     parameter :term, "Search term"
+    parameter :per_page, "Search term"
 
     get '/search.json' do
       let(:term){"Product title"}

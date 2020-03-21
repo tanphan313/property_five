@@ -7,4 +7,4 @@ end
 json.set! :num_pages, @searches.total_pages
 json.set! :num_results, @searches.total_count
 json.set! :current_page, @searches.current_page
-json.set! :page_size, @searches.instance_variable_get("@_per")
+json.set! :page_size, @searches.current_per_page
