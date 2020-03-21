@@ -21,3 +21,5 @@ json.contact_mobile_phone presenter.contact_mobile_phone
 json.contact_email presenter.contact_email
 json.address_attributes presenter.address_attributes
 json.product_images_attributes presenter.product_images_attributes
+json.created_at presenter.created_at
+json.updated_at presenter.updated_at
