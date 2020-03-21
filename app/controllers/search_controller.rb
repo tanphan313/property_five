@@ -25,9 +25,7 @@ class SearchController < ApplicationController
   end
 
   def filter_params
-    SearchParams.(
-      params.fetch(:q, {}), MAP_ATTRIBUTES
-    )
+    SearchParams.(params.fetch(:q, {}), MAP_ATTRIBUTES)
   end
 
   def sort_params
