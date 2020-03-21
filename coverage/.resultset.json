@@ -154,8 +154,41 @@
           null
         ]
       },
-      "/Users/tanphan/workspaces/property_five/app/controllers/products_controller.rb": {
+      "/Users/tanphan/workspaces/property_five/app/controllers/search_controller.rb": {
         "lines": [
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          0,
+          null,
+          1,
+          null,
+          2,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
           1,
           1,
           1,
@@ -177,47 +210,73 @@
           null
         ]
       },
-      "/Users/tanphan/workspaces/property_five/app/presenters/product_presenter.rb": {
+      "/Users/tanphan/workspaces/property_five/app/models/search.rb": {
         "lines": [
           1,
           1,
-          null,
           1,
           null,
           1,
+          null,
+          2,
+          null,
+          1,
+          1,
+          2,
+          null,
+          null,
+          1,
+          2,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
           1,
           null,
           null,
           1,
           1,
-          0,
           null,
           null,
+          1,
+          1,
+          1,
           null,
-          0,
+          null,
+          1,
+          2,
           null,
           null,
           null
         ]
       },
-      "/Users/tanphan/workspaces/property_five/app/presenters/concerns/product_presentable.rb": {
+      "/Users/tanphan/workspaces/property_five/app/support/search_params.rb": {
         "lines": [
           1,
           1,
           null,
           1,
-          null,
-          null,
-          null,
-          1,
-          null,
-          1,
           1,
           1,
           null,
           null,
           1,
           1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          6,
+          0,
+          null,
+          null,
           1,
           null,
           null
@@ -310,6 +369,52 @@
           null
         ]
       },
+      "/Users/tanphan/workspaces/property_five/app/presenters/product_presenter.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          0,
+          null,
+          null,
+          null,
+          0,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/tanphan/workspaces/property_five/app/presenters/concerns/product_presentable.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
       "/Users/tanphan/workspaces/property_five/lib/utils.rb": {
         "lines": [
           1,
@@ -325,6 +430,6 @@
         ]
       }
     },
-    "timestamp": 1584784778
+    "timestamp": 1584786706
   }
 }

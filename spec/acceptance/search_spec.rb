@@ -14,6 +14,7 @@ resource "Products" do
     parameter :term, "Search term"
 
     get '/search.json' do
+      let(:term){"Product title"}
       example_request "Search return result" do
         json = JSON.parse(response_body)
         puts json

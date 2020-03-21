@@ -7,10 +7,6 @@ class Search < ApplicationRecord
   scope :score_sort, -> {order("score DESC")}
 
   class << self
-    def by_term term
-      where(where_clause(term))
-    end
-
     def normalize(query)
       query.to_s.gsub(/\s(?![\&|\!|\|])/, '\\\\ ')
     end
@@ -29,6 +25,11 @@ class Search < ApplicationRecord
 
     def search_ids(search_term)
       by_term(search_term).select(:searchable_id, :searchable_type, rank_score(quote_nomalize search_term))
+    end
+
+    def by_term(term)
+      term = quote_nomalize term
+      where(where_clause(term))
     end
 
     def quote_nomalize term
