@@ -9,3 +9,4 @@ end
 json.set! :num_pages, @products.total_pages
 json.set! :num_results, @products.total_count
 json.set! :current_page, @products.current_page
+json.set! :page_size, @products.instance_variable_get("@_per")

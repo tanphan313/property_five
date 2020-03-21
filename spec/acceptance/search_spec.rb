@@ -15,6 +15,7 @@ resource "Products" do
 
     get '/search.json' do
       let(:term){"Product title"}
+      let(:per_page){90}
       example_request "Search return result" do
         json = JSON.parse(response_body)
         puts json
@@ -31,7 +32,6 @@ resource "Products" do
 
       example_request "Get detail information of product" do
         json = JSON.parse(response_body)
-        puts json
         expect(json["title"]).to eq "Product title"
         expect(status).to eq(200)
       end
