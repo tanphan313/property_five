@@ -19,8 +19,8 @@ class ProductFormPresenter
         id: img.id,
         description: img.description,
         master: img.master,
-        small: Utils.full_asset_url(img.small_url),
-        medium: Utils.full_asset_url(img.medium_url)
+        small_url: Utils.full_asset_url(img.small_url),
+        medium_url: Utils.full_asset_url(img.medium_url)
       }
     end
   end
