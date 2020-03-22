@@ -158,6 +158,7 @@ resource "creator_api/products" do
         let(:ha_noi){cities(:ha_noi)}
         let(:ba_dinh){districts(:ba_dinh)}
         let(:cong_vi){wards(:cong_vi)}
+        let(:default_image){product_images(:default_image)}
         let(:image){File.open(Rails.root.join("test/files/image.jpg"))}
 
         let(:title){"String"}
@@ -180,6 +181,7 @@ resource "creator_api/products" do
         let(:contact_phone){"0987654321"}
         let(:contact_mobile_phone){"0987654321"}
         let(:contact_email){"contact@gmail.com"}
+        let(:product_image_ids){[default_image.id]}
 
         let(:address_attributes) do
           {
@@ -191,17 +193,22 @@ resource "creator_api/products" do
           }
         end
 
-        let(:product_images_attributes) do
-          [
-            {
-              master: true,
-              attachment: Rack::Test::UploadedFile.new(image, "image/jpg")
-            },
-            {
-              attachment: Rack::Test::UploadedFile.new(image, "image/jpg")
-            }
-          ]
+        before do
+          default_image.attachment = Rack::Test::UploadedFile.new(image, "image/jpg")
+          default_image.save
         end
+
+        #let(:product_images_attributes) do
+        #  [
+        #    {
+        #      master: true,
+        #      attachment: Rack::Test::UploadedFile.new(image, "image/jpg")
+        #    },
+        #    {
+        #      attachment: Rack::Test::UploadedFile.new(image, "image/jpg")
+        #    }
+        #  ]
+        #end
 
         let(:id){default_product.id}
         example_request "Update product" do

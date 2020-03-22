@@ -14,11 +14,11 @@ class ProductFormPresenter
 
   def product_images_attributes
     return [] unless product_images.present?
-    product_images.oldest.map do |img|
+    product_images.by_position.map do |img|
       {
         id: img.id,
         description: img.description,
-        master: img.master,
+        position: img.position,
         small_url: Utils.full_asset_url(img.small_url),
         medium_url: Utils.full_asset_url(img.medium_url)
       }

@@ -2,12 +2,6 @@ module AdminApi
   class ProductsController < ApplicationController
     include AdminProductSearchable
 
-    FORM_PARAMS = [:title, :product_type_id, :product_category_id, :project, :acreage, :price,
-      :description, :facade, :entrance, :house_direction, :balcony_direction, :num_floor, :num_bedroom, :num_toilet,
-      :furniture, :contact_name, :contact_address, :contact_phone, :contact_mobile_phone, :contact_email,
-      product_image_ids: [],
-      address_attributes: [:id, :city_id, :district_id, :ward_id, :street, :full_name]]
-
     def index
       @products = Product.ransack(search_params).result.newest.within_price_range(price_range_params)
         .page(params[:page]).per(params[:per_page])
@@ -21,10 +15,10 @@ module AdminApi
     end
 
     def create
-      @product = current_admin.products.build form_params
-      if @product.save
-        ProductImage.find(image_ids_params.first).update(master: true) if image_ids_params.first.present?
+      @product = current_admin.products.build
+      if ProductBusiness.new(@product).create params
         @product.reload
+
         render :create, status: :created
       else
         render json: {errors: @product.errors.full_messages}, status: :unprocessable_entity
@@ -32,8 +26,7 @@ module AdminApi
     end
 
     def update
-      if product.update form_params
-        ProductImage.find(image_ids_params.first).update(master: true) if image_ids_params.first.present?
+      if ProductBusiness.new(product).update params
         product.reload
 
         render :update, status: :created
@@ -52,14 +45,6 @@ module AdminApi
     end
 
     private
-    def form_params
-      @form_params ||= params.require(:product).permit(FORM_PARAMS)
-    end
-
-    def image_ids_params
-      @image_ids_params ||= form_params[:product_image_ids]
-    end
-
     def product
       @product ||= params[:id] ? Product.find(params[:id]) : current_admin.products.build
     end
