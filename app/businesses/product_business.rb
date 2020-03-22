@@ -27,14 +27,20 @@ class ProductBusiness
   end
 
   def update_image_positions
-    image_ids_params.each_with_index do |img_id, index|
-      img = ProductImage.find(img_id)
-      img.update(position: index) unless img.position == index
-    end
+    product.update product_images_attributes: product_images_attributes
   end
 
   private
-  def image_ids_params
-    @image_ids_params ||= form_params[:product_image_ids]
+  def image_ids
+    @image_ids ||= form_params[:product_image_ids]
+  end
+
+  def product_images_attributes
+    image_ids.map.with_index do |id, index|
+      {
+        id: id,
+        position: index
+      }
+    end
   end
 end
