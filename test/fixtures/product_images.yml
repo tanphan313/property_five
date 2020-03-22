@@ -1,2 +1,4 @@
 default_image:
   master: true
+default_image2:
+  master: false

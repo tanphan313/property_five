@@ -139,7 +139,6 @@ resource "creator_api/products" do
         example_request "Create product" do
           json = JSON.parse(response_body)
           expect(json).not_to be_empty
-          puts json
           expect(status).to eq(201)
         end
       end
@@ -159,6 +158,7 @@ resource "creator_api/products" do
         let(:ba_dinh){districts(:ba_dinh)}
         let(:cong_vi){wards(:cong_vi)}
         let(:default_image){product_images(:default_image)}
+        let(:default_image2){product_images(:default_image2)}
         let(:image){File.open(Rails.root.join("test/files/image.jpg"))}
 
         let(:title){"String"}
@@ -181,7 +181,7 @@ resource "creator_api/products" do
         let(:contact_phone){"0987654321"}
         let(:contact_mobile_phone){"0987654321"}
         let(:contact_email){"contact@gmail.com"}
-        let(:product_image_ids){[default_image.id]}
+        let(:product_image_ids){[default_image2.id, default_image.id]}
 
         let(:address_attributes) do
           {
@@ -196,6 +196,8 @@ resource "creator_api/products" do
         before do
           default_image.attachment = Rack::Test::UploadedFile.new(image, "image/jpg")
           default_image.save
+          default_image2.attachment = Rack::Test::UploadedFile.new(image, "image/jpg")
+          default_image2.save
         end
 
         #let(:product_images_attributes) do
@@ -214,6 +216,7 @@ resource "creator_api/products" do
         example_request "Update product" do
           json = JSON.parse(response_body)
           expect(json).not_to be_empty
+          expect(default_image2.reload.position).to eq 0
           expect(status).to eq(201)
         end
       end
