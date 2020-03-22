@@ -6,8 +6,7 @@ module AdminApi
       :description, :facade, :entrance, :house_direction, :balcony_direction, :num_floor, :num_bedroom, :num_toilet,
       :furniture, :contact_name, :contact_address, :contact_phone, :contact_mobile_phone, :contact_email,
       :product_image_ids,
-      address_attributes: [:id, :city_id, :district_id, :ward_id, :street, :full_name],
-      product_images_attributes: [:id, :_destroy, :attachment, :description, :master]]
+      address_attributes: [:id, :city_id, :district_id, :ward_id, :street, :full_name]]
 
     def index
       @products = Product.ransack(search_params).result.newest.within_price_range(price_range_params)
