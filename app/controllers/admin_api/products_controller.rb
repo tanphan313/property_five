@@ -23,6 +23,7 @@ module AdminApi
     def create
       @product = current_admin.products.build form_params
       if @product.save
+        ProductImage.find(image_ids_params.first).update(master: true) if image_ids_params.first.present?
         @product.reload
         render :create, status: :created
       else
@@ -32,6 +33,7 @@ module AdminApi
 
     def update
       if product.update form_params
+        ProductImage.find(image_ids_params.first).update(master: true) if image_ids_params.first.present?
         product.reload
 
         render :update, status: :created
@@ -52,6 +54,10 @@ module AdminApi
     private
     def form_params
       @form_params ||= params.require(:product).permit(FORM_PARAMS)
+    end
+
+    def image_ids_params
+      @image_ids_params ||= form_params[:product_image_ids]
     end
 
     def product

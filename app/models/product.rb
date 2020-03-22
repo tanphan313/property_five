@@ -15,6 +15,8 @@ class Product < ApplicationRecord
     parent.table[:balcony_direction]
   end
 
+  before_save :reset_image_master
+
   with_options presence: true do
     validates :title, :product_type_id, :product_category_id, :description, :contact_mobile_phone
     validates :contact_mobile_phone, numericality: {only_integer: true}
@@ -47,5 +49,9 @@ class Product < ApplicationRecord
     unless ProductCategoriesType.find_by(product_type: product_type, product_category: product_category).present?
       errors.add :base, "Product category is not correct for the given type"
     end
+  end
+
+  def reset_image_master
+    product_images.update master: false
   end
 end
