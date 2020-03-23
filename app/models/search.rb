@@ -8,6 +8,9 @@ class Search < ApplicationRecord
   scope :within_price_range, ->(price_range_params) do
     where(price: price_range_params)
   end
+  scope :within_acreage_range, ->(price_acreage_params) do
+    where(acreage: price_acreage_params)
+  end
 
   class << self
     def normalize(query)

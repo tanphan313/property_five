@@ -15,6 +15,7 @@ class SearchController < ApplicationController
       Search
     end
     @searches = search_scope.ransack(search_params).result.within_price_range(price_range_params)
+      .within_acreage_range(acreage_range_params)
       .includes(searchable: :product_images).page(params[:page]).per(params[:per_page])
     @presenters = @searches.map {|search| ProductPresenter.new(search.searchable)}
   end
@@ -38,6 +39,12 @@ class SearchController < ApplicationController
   def price_range_params
     min = params[:min_price] || 0
     max = params[:max_price] || 9223372036854775807
+    min..max
+  end
+
+  def acreage_range_params
+    min = params[:min_acreage] || 0.0
+    max = params[:max_acreage] || 9223372036854775807.0
     min..max
   end
 end
