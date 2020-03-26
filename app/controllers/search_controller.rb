@@ -3,6 +3,7 @@ class SearchController < ApplicationController
     title: :title_cont,
     product_type_id: :product_type_id_eq,
     product_category_id: :product_category_id_eq,
+    product_amenity_ids: :product_amenity_ids_contains,
     city_id: :city_id_eq,
     district_id: :district_id_eq,
     ward_id: :ward_id_eq

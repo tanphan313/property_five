@@ -64,4 +64,17 @@ namespace :refine_db do
       ProductCategoriesType.create product_type: rent_type, product_category: product_cat
     end
   end
+
+  task remove_rent_type: :environment do
+    rent_type = ProductType.find_by(name: "Nhà đất cho thuê")
+    cat_ids = ProductCategoriesType.where(product_type_id: rent_type.id).pluck(:product_category_id)
+    ProductCategory.where(id: cat_ids).destroy_all
+  end
+
+  task import_amenities: :environment do
+    ["Phòng Tivi", "Khu vui chơi", "Phòng giặt đồ", "An ninh cao",
+      "Sân thượng", "Vườn", "Bể bơi", "Phòng gym"].each do |name|
+      ProductAmenity.find_or_create_by name: name
+    end
+  end
 end

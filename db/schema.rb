@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200323160803) do
+ActiveRecord::Schema.define(version: 20200326154726) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,6 +96,12 @@ ActiveRecord::Schema.define(version: 20200323160803) do
     t.index ["name"], name: "index_districts_on_name"
   end
 
+  create_table "product_amenities", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "product_categories", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -130,7 +136,7 @@ ActiveRecord::Schema.define(version: 20200323160803) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.bigint "product_type_id", null: false
+    t.integer "product_type_id"
     t.bigint "product_category_id", null: false
     t.string "title"
     t.string "project"
@@ -154,9 +160,20 @@ ActiveRecord::Schema.define(version: 20200323160803) do
     t.datetime "updated_at", null: false
     t.string "editor_type"
     t.bigint "editor_id"
+    t.integer "num_bathroom"
+    t.integer "num_parking"
+    t.float "property_age"
+    t.float "land_acreage"
     t.index ["editor_type", "editor_id"], name: "index_products_on_editor_type_and_editor_id"
     t.index ["product_category_id"], name: "index_products_on_product_category_id"
     t.index ["product_type_id"], name: "index_products_on_product_type_id"
+  end
+
+  create_table "products_product_amenities", force: :cascade do |t|
+    t.bigint "product_id"
+    t.bigint "product_amenity_id"
+    t.index ["product_amenity_id"], name: "index_products_product_amenities_on_product_amenity_id"
+    t.index ["product_id"], name: "index_products_product_amenities_on_product_id"
   end
 
   create_table "wards", force: :cascade do |t|
@@ -190,19 +207,25 @@ ActiveRecord::Schema.define(version: 20200323160803) do
                LEFT JOIN cities c ON ((addresses.city_id = c.id)))
                LEFT JOIN districts d ON ((addresses.district_id = d.id)))
                LEFT JOIN wards w ON ((addresses.ward_id = w.id)))
+          ), ppa AS (
+           SELECT products_product_amenities.product_id,
+              array_agg(DISTINCT products_product_amenities.product_amenity_id) AS product_amenity_ids
+             FROM products_product_amenities
+            GROUP BY products_product_amenities.product_id
           )
    SELECT 'Product'::character varying AS searchable_type,
       p.id AS searchable_id,
       p.title,
-      p.product_type_id,
       p.product_category_id,
+      ppa.product_amenity_ids,
       p.price,
       p.acreage,
       addr.city_id,
       addr.district_id,
       addr.ward_id,
       ((((setweight(to_tsvector('english'::regconfig, COALESCE(vn_unaccent((p.title)::text), ' '::text)), 'A'::"char") || setweight(to_tsvector('english'::regconfig, COALESCE(vn_unaccent(p.description), ' '::text)), 'A'::"char")) || setweight(to_tsvector('english'::regconfig, COALESCE(vn_unaccent((p.project)::text), ' '::text)), 'B'::"char")) || setweight(to_tsvector('english'::regconfig, COALESCE(vn_unaccent(p.furniture), ' '::text)), 'B'::"char")) || setweight(to_tsvector('english'::regconfig, COALESCE(vn_unaccent(addr.full_address), ' '::text)), 'B'::"char")) AS document
-     FROM (products p
-       LEFT JOIN addr ON ((p.id = addr.product_id)));
+     FROM ((products p
+       LEFT JOIN addr ON ((p.id = addr.product_id)))
+       LEFT JOIN ppa ON ((p.id = ppa.product_id)));
   SQL
 end

@@ -36,7 +36,6 @@ resource "admin_api/products" do
 
   shared_examples "parameters for create/update" do
     parameter :title, "String", scope: :product
-    parameter :product_type_id, "String", scope: :product
     parameter :product_category_id, "String", scope: :product
     parameter :project, "String", scope: :product
     parameter :acreage, "String", scope: :product
@@ -56,6 +55,7 @@ resource "admin_api/products" do
     parameter :contact_mobile_phone, "String", scope: :product
     parameter :contact_email, "String", scope: :product
     parameter :product_image_ids, "String", scope: :product
+    parameter :product_amenity_ids, "String", scope: :product
 
     parameter :address_attributes, "String", scope: :product
     parameter :id, "String", scope: :address_attributes
@@ -90,7 +90,6 @@ resource "admin_api/products" do
         let(:project){"String"}
         let(:acreage){30.8}
         let(:price){30.8}
-        let(:product_type_id){default_product_type.id}
         let(:product_category_id){default_product_category.id}
         let(:description){"String"}
         let(:facade){30.8}
@@ -107,6 +106,7 @@ resource "admin_api/products" do
         let(:contact_mobile_phone){"0987654321"}
         let(:contact_email){"contact@gmail.com"}
         let(:product_image_ids){[default_image.id]}
+        let(:product_amenity_ids){[]}
 
         let(:address_attributes) do
           {
@@ -164,7 +164,6 @@ resource "admin_api/products" do
         let(:project){"String"}
         let(:acreage){30.8}
         let(:price){30.8}
-        let(:product_type_id){default_product_type.id}
         let(:product_category_id){default_product_category.id}
         let(:description){"String"}
         let(:facade){30.8}
@@ -181,6 +180,7 @@ resource "admin_api/products" do
         let(:contact_mobile_phone){"0987654321"}
         let(:contact_email){"contact@gmail.com"}
         let(:product_image_ids){[default_image.id]}
+        let(:product_amenity_ids){[]}
 
         let(:address_attributes) do
           {

@@ -1,6 +1,5 @@
 json.id presenter.id
 json.title presenter.title
-json.product_type_id presenter.product_type_id
 json.product_category_id presenter.product_category_id
 json.project presenter.project
 json.acreage presenter.acreage
@@ -24,3 +23,4 @@ json.product_images_attributes presenter.product_images_attributes
 json.product_image_ids presenter.product_image_ids
 json.created_at presenter.created_at
 json.updated_at presenter.updated_at
+json.product_amenity_ids presenter.product_amenity_ids

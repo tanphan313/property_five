@@ -1,0 +1,6 @@
+ppa1:
+  product: default_product
+  product_amenity: ame1
+ppa2:
+  product: default_product
+  product_amenity: ame2

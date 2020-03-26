@@ -36,7 +36,6 @@ resource "creator_api/products" do
 
   shared_examples "parameters for create/update" do
     parameter :title, "String", scope: :product
-    parameter :product_type_id, "String", scope: :product
     parameter :product_category_id, "String", scope: :product
     parameter :project, "String", scope: :product
     parameter :acreage, "String", scope: :product
@@ -56,7 +55,7 @@ resource "creator_api/products" do
     parameter :contact_mobile_phone, "String", scope: :product
     parameter :contact_email, "String", scope: :product
     parameter :product_image_ids, "String", scope: :product
-
+    parameter :product_amenity_ids, "String", scope: :product
 
     parameter :address_attributes, "String", scope: :product
     parameter :id, "String", scope: :address_attributes
@@ -108,6 +107,7 @@ resource "creator_api/products" do
         let(:contact_mobile_phone){"0987654321"}
         let(:contact_email){"contact@gmail.com"}
         let(:product_image_ids){[default_image.id]}
+        let(:product_amenity_ids){[]}
 
         let(:address_attributes) do
           {
@@ -182,6 +182,7 @@ resource "creator_api/products" do
         let(:contact_mobile_phone){"0987654321"}
         let(:contact_email){"contact@gmail.com"}
         let(:product_image_ids){[default_image2.id, default_image.id]}
+        let(:product_amenity_ids){[]}
 
         let(:address_attributes) do
           {

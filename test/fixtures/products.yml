@@ -3,5 +3,4 @@ default_product:
   editor_type: "Creator"
   title: "Product title"
   price: 10000000
-  product_type: default_product_type
   product_category: default_product_category
