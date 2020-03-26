@@ -19,7 +19,7 @@ class ProductImageUploader < CarrierWave::Uploader::Base
   end
 
   version :small do
-    process resize_to_fit: [200, 200]
+    process resize_to_fit: [320, 320]
   end
 
   version :medium do
