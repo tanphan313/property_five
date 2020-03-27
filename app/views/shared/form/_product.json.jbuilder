@@ -24,3 +24,7 @@ json.product_image_ids presenter.product_image_ids
 json.created_at presenter.created_at
 json.updated_at presenter.updated_at
 json.product_amenity_ids presenter.product_amenity_ids
+json.num_bathroom presenter.num_bathroom
+json.num_parking presenter.num_parking
+json.property_age presenter.property_age
+json.land_acreage presenter.land_acreage
