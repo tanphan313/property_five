@@ -6,7 +6,10 @@ class SearchController < ApplicationController
     product_amenity_ids: :product_amenity_ids_contains,
     city_id: :city_id_eq,
     district_id: :district_id_eq,
-    ward_id: :ward_id_eq
+    ward_id: :ward_id_eq,
+    featured: :featured_eq,
+    lat: :lat_lt,
+    lng: :lng_gt
   }.freeze
 
   def index

@@ -3,4 +3,5 @@ json.(presenter, :id, :created_at, :updated_at, :title, :price, :project, :acrea
   :num_bathroom, :num_parking, :property_age, :land_acreage,
   :product_type_id, :product_category_id, :description, :facade,
   :entrance, :house_direction, :balcony_direction, :num_floor, :num_bedroom, :num_toilet, :furniture,
-  :editor_id, :editor_email, :editor_type, :product_amenity_ids)
+  :editor_id, :editor_email, :editor_type, :product_amenity_ids,
+  :lng, :lat, :featured)

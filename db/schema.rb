@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200326154726) do
+ActiveRecord::Schema.define(version: 20200404150155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20200326154726) do
     t.bigint "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "lat"
+    t.decimal "lng"
     t.index ["city_id"], name: "index_addresses_on_city_id"
     t.index ["district_id"], name: "index_addresses_on_district_id"
     t.index ["product_id"], name: "index_addresses_on_product_id"
@@ -164,6 +166,7 @@ ActiveRecord::Schema.define(version: 20200326154726) do
     t.integer "num_parking"
     t.float "property_age"
     t.float "land_acreage"
+    t.boolean "featured", default: false
     t.index ["editor_type", "editor_id"], name: "index_products_on_editor_type_and_editor_id"
     t.index ["product_category_id"], name: "index_products_on_product_category_id"
     t.index ["product_type_id"], name: "index_products_on_product_type_id"
@@ -174,6 +177,21 @@ ActiveRecord::Schema.define(version: 20200326154726) do
     t.bigint "product_amenity_id"
     t.index ["product_amenity_id"], name: "index_products_product_amenities_on_product_amenity_id"
     t.index ["product_id"], name: "index_products_product_amenities_on_product_id"
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.string "name"
+    t.string "phone_number"
+    t.string "email"
+    t.string "address"
+    t.integer "property_type", default: 0
+    t.float "property_age"
+    t.float "acreage"
+    t.float "land_acreage"
+    t.boolean "checked", default: false
+    t.string "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "wards", force: :cascade do |t|
@@ -202,6 +220,8 @@ ActiveRecord::Schema.define(version: 20200326154726) do
               addresses.product_id,
               addresses.created_at,
               addresses.updated_at,
+              addresses.lat,
+              addresses.lng,
               concat(c.name, ',', d.name, ',', w.name, ',', addresses.street) AS full_address
              FROM (((addresses
                LEFT JOIN cities c ON ((addresses.city_id = c.id)))
@@ -220,9 +240,13 @@ ActiveRecord::Schema.define(version: 20200326154726) do
       ppa.product_amenity_ids,
       p.price,
       p.acreage,
+      p.land_acreage,
+      p.featured,
       addr.city_id,
       addr.district_id,
       addr.ward_id,
+      addr.lng,
+      addr.lat,
       ((((setweight(to_tsvector('english'::regconfig, COALESCE(vn_unaccent((p.title)::text), ' '::text)), 'A'::"char") || setweight(to_tsvector('english'::regconfig, COALESCE(vn_unaccent(p.description), ' '::text)), 'A'::"char")) || setweight(to_tsvector('english'::regconfig, COALESCE(vn_unaccent((p.project)::text), ' '::text)), 'B'::"char")) || setweight(to_tsvector('english'::regconfig, COALESCE(vn_unaccent(p.furniture), ' '::text)), 'B'::"char")) || setweight(to_tsvector('english'::regconfig, COALESCE(vn_unaccent(addr.full_address), ' '::text)), 'B'::"char")) AS document
      FROM ((products p
        LEFT JOIN addr ON ((p.id = addr.product_id)))

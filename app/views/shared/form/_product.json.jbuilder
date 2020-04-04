@@ -28,3 +28,4 @@ json.num_bathroom presenter.num_bathroom
 json.num_parking presenter.num_parking
 json.property_age presenter.property_age
 json.land_acreage presenter.land_acreage
+json.featured presenter.featured

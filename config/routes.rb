@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   namespace :creator_api do
     resources :products
     resources :product_images, only: [:create, :update, :destroy]
+    resources :requests, only: [:index, :show, :destroy, :update]
   end
 
   namespace :supports do
@@ -24,8 +25,10 @@ Rails.application.routes.draw do
     resources :wards, only: :index
 
     resource :master_datas, only: :show
+    resources :requests, only: [:index, :show, :destroy, :update]
   end
 
   resources :search, only: :index, as: "search"
   resources :products, only: :show
+  resources :requests, only: :create
 end

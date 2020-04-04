@@ -2,9 +2,9 @@ class ProductBusiness
   FORM_PARAMS = [:title, :product_category_id, :project, :acreage, :price,
     :description, :facade, :entrance, :house_direction, :balcony_direction, :num_floor, :num_bedroom, :num_toilet,
     :num_bathroom, :num_parking, :property_age, :land_acreage,
-    :furniture, :contact_name, :contact_address, :contact_phone, :contact_mobile_phone, :contact_email,
+    :furniture, :contact_name, :contact_address, :contact_phone, :contact_mobile_phone, :contact_email, :featured,
     product_image_ids: [], product_amenity_ids: [],
-    address_attributes: [:id, :city_id, :district_id, :ward_id, :street, :full_name]]
+    address_attributes: [:id, :city_id, :district_id, :ward_id, :street, :full_name, :lng, :lat]]
 
   attr_reader :product, :form_params
 
