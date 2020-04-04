@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :creators
     resources :products
     resources :product_images, only: [:create, :update, :destroy]
+    resources :requests, only: [:index, :show, :destroy, :update]
   end
 
   mount_devise_token_auth_for "Creator", at: "creator_api/creator_auth",
@@ -25,7 +26,6 @@ Rails.application.routes.draw do
     resources :wards, only: :index
 
     resource :master_datas, only: :show
-    resources :requests, only: [:index, :show, :destroy, :update]
   end
 
   resources :search, only: :index, as: "search"
