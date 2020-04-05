@@ -5,5 +5,5 @@ json.(presenter, :id, :created_at, :updated_at, :title, :price, :project, :acrea
   :entrance, :house_direction, :balcony_direction, :num_floor, :num_bedroom, :num_toilet, :furniture,
   :editor_id, :editor_email, :editor_type, :product_amenity_ids, :featured)
 json.address do
-  json.partial! "shared/address", address: @presenter.address
+  json.partial! "shared/address", address: presenter.address
 end
