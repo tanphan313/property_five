@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-  FROM_PARAMS = %i(name phone_number email address property_type property_age acreage land_acreage note agree)
+  FORM_PARAMS = %i(name phone_number email address property_type property_age acreage land_acreage note agree)
 
   def create
     @request = Request.new form_params
