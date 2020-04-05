@@ -1,9 +1,9 @@
 class RequestsController < ApplicationController
-  FROM_PARAMS = %i(name phone_number email address property_type property_age acreage land_acreage)
+  FROM_PARAMS = %i(name phone_number email address property_type property_age acreage land_acreage note agree)
 
   def create
     @request = Request.new form_params
-    if @request
+    if @request.save
       render json: {message: "Request created"}, status: :created
     else
       render json: {errors: @request.errors.full_messages}, status: :unprocessable_entity

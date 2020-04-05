@@ -1,10 +1,9 @@
 module AdminApi
   class RequestsController < ApplicationController
-    FORM_PARAMS = %i(checked note)
+    FORM_PARAMS = %i(note)
 
     RANSACK_MAP_KEYS = {
-      checked: :checked_eq,
-      property_type: :property_type_eq
+      checked: :checked_eq
     }
 
     def index
