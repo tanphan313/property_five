@@ -1,4 +1,4 @@
-json.(@presenter, :id, :created_at, :updated_at, :title, :price, :project, :acreage, :address,
+json.(@presenter, :id, :created_at, :updated_at, :title, :price, :project, :acreage,
   :master_image_small_url, :master_image_medium_url, :image_urls,
   :product_type_id, :product_category_id, :description, :facade,
   :num_bathroom, :num_parking, :property_age, :land_acreage,
