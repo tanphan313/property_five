@@ -11,12 +11,4 @@ class Address < ApplicationRecord
   delegate :name, to: :city, prefix: true
   delegate :name, to: :district, prefix: true
   delegate :name, to: :ward, prefix: true
-
-  def lng
-    read_attribute(:lng).try(:to_d)
-  end
-
-  def lat
-    read_attribute(:lat).try(:to_d)
-  end
 end

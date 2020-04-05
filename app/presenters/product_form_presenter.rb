@@ -9,7 +9,10 @@ class ProductFormPresenter
 
   def address_attributes
     return {} unless address.present?
-    address.attributes
+    address.attributes.except("lat", "lng").merge({
+      lat: address.lat.to_d,
+      lng: address.lng.to_d,
+    })
   end
 
   def product_images_attributes
