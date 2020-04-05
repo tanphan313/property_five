@@ -1,1 +1,1 @@
-json.partial! "shared/request", request: request
+json.partial! "shared/request", request: property_request

@@ -15,7 +15,7 @@ module AdminApi
     end
 
     def update
-      if request.update form_params
+      if property_request.update form_params
         render :update, status: :ok
       else
         render json: {errors: request.errors.full_messages}, status: :unprocessable_entity
@@ -23,11 +23,11 @@ module AdminApi
     end
 
     def destroy
-      request.destroy
-      if request.destroyed?
+      property_request.destroy
+      if property_request.destroyed?
         render json: {message: "Request deleted"}, status: :created
       else
-        render json: {errors: request.errors.full_messages}, status: :unprocessable_entity
+        render json: {errors: property_request.errors.full_messages}, status: :unprocessable_entity
       end
     end
 
@@ -40,9 +40,9 @@ module AdminApi
       @form_params ||= params.require(:request).permit(FORM_PARAMS)
     end
 
-    def request
-      @request ||= Request.find(params[:id])
+    def property_request
+      @property_request ||= Request.find(params[:id])
     end
-    helper_method :request
+    helper_method :property_request
   end
 end
