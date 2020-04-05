@@ -1,6 +1,6 @@
 module AdminApi
   class RequestsController < ApplicationController
-    FORM_PARAMS = %i(note)
+    FORM_PARAMS = %i(checked)
 
     RANSACK_MAP_KEYS = {
       checked: :checked_eq
