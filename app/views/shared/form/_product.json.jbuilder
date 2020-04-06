@@ -18,7 +18,6 @@ json.contact_address presenter.contact_address
 json.contact_phone presenter.contact_phone
 json.contact_mobile_phone presenter.contact_mobile_phone
 json.contact_email presenter.contact_email
-json.address_attributes presenter.address_attributes
 json.product_images_attributes presenter.product_images_attributes
 json.product_image_ids presenter.product_image_ids
 json.created_at presenter.created_at
@@ -29,3 +28,6 @@ json.num_parking presenter.num_parking
 json.property_age presenter.property_age
 json.land_acreage presenter.land_acreage
 json.featured presenter.featured
+json.address_attributes do
+  json.partial! "shared/address", address: presenter.address
+end

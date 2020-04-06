@@ -7,14 +7,6 @@ class ProductFormPresenter
     @product ||= product
   end
 
-  def address_attributes
-    return {} unless address.present?
-    address.attributes.except("lat", "lng").merge({
-      lat: address.lat.try(:to_f),
-      lng: address.lng.try(:to_f),
-    })
-  end
-
   def product_images_attributes
     return [] unless product_images.present?
     product_images.by_position.map do |img|
