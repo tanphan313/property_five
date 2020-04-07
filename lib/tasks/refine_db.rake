@@ -46,32 +46,16 @@ namespace :refine_db do
     ProductType.destroy_all
     ProductCategory.destroy_all
 
-    ["Nhà đất bán", "Nhà đất cho thuê"].each do |name|
+    ["Nhà đất bán"].each do |name|
       ProductType.create name: name
     end
 
     sell_type = ProductType.find_by(name: "Nhà đất bán")
-    ["Bán căn hộ chung cư", "Bán nhà riêng", "Bán nhà biệt thự, liền kề", "Bán nhà mặt phố", "Bán đất nền dự án",
-      "Bán đất", "Bán trang trại, khu nghỉ dưỡng", "Bán kho, nhà xưởng", "Bán loại bất động sản khác"].each do |name|
+    ["Bán căn hộ chung cư", "Bán nhà riêng", "Bán nhà biệt thự, liền kề", "Bán nhà mặt phố", "Bán đất"].each do |name|
       product_cat = ProductCategory.create name: name
       ProductCategoriesType.create product_type: sell_type, product_category: product_cat
     end
 
-    rent_type = ProductType.find_by(name: "Nhà đất cho thuê")
-    ["Cho thuê căn hộ chung cư", "Cho thuê nhà riêng", "Cho thuê nhà mặt phố", "Cho thuê nhà trọ, phòng trọ",
-      "Cho thuê văn phòng", "Cho thuê cửa hàng, ki ốt", "Cho thuê kho, nhà xưởng, đất", "Cho thuê loại bất động sản khác"].each do |name|
-      product_cat = ProductCategory.create name: name
-      ProductCategoriesType.create product_type: rent_type, product_category: product_cat
-    end
-  end
-
-  task remove_rent_type: :environment do
-    rent_type = ProductType.find_by(name: "Nhà đất cho thuê")
-    cat_ids = ProductCategoriesType.where(product_type_id: rent_type.id).pluck(:product_category_id)
-    ProductCategory.where(id: cat_ids).destroy_all
-  end
-
-  task import_amenities: :environment do
     ["Phòng Tivi", "Khu vui chơi", "Phòng giặt đồ", "An ninh cao",
       "Sân thượng", "Vườn", "Bể bơi", "Phòng gym"].each do |name|
       ProductAmenity.find_or_create_by name: name
