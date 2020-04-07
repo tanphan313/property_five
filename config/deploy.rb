@@ -4,7 +4,7 @@ Dotenv.load
 lock "~> 3.12.1"
 
 set :application, "property_five"
-set :repo_url, "git@github.com:tanphan313/property_five.git"
+set :repo_url, ENV["REPO_URL"]
 
 # Default branch is :master
 ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -31,7 +31,7 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/syst
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 set :default_env, {
-  repo_url: "git@github.com:tanphan313/property_five.git",
+  repo_url: ENV["REPO_URL"],
 }
 
 # Default value for local_user is ENV['USER']
