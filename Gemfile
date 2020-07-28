@@ -32,7 +32,7 @@ gem 'carrierwave', '~> 1.0'
 gem 'cloudinary'
 gem 'mini_magick'
 gem "fog-aws"
-gem 'json', '~> 1.8', '< 3'
+gem 'json', '~> 2.3'
 
 gem 'scenic'
 gem 'kaminari'
