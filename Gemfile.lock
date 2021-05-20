@@ -241,10 +241,12 @@ GEM
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2019.1009)
-    mimemagic (0.3.4)
+    mimemagic (0.3.10)
+      nokogiri (~> 1)
+      rake
     mini_magick (4.10.1)
     mini_mime (1.0.2)
-    mini_portile2 (2.3.0)
+    mini_portile2 (2.5.1)
     minitest (5.14.0)
     monetize (1.9.4)
       money (~> 6.12)
@@ -266,8 +268,9 @@ GEM
     net-ssh (5.2.0)
     netrc (0.11.0)
     nio4r (2.5.2)
-    nokogiri (1.8.5)
-      mini_portile2 (~> 2.3.0)
+    nokogiri (1.11.4)
+      mini_portile2 (~> 2.5.0)
+      racc (~> 1.4)
     oauth2 (1.4.4)
       faraday (>= 0.8, < 2.0)
       jwt (>= 1.0, < 3.0)
@@ -311,6 +314,7 @@ GEM
     puma (3.12.4)
     pundit (2.1.0)
       activesupport (>= 3.0.0)
+    racc (1.5.2)
     rack (2.0.9)
     rack-contrib (2.1.0)
       rack (~> 2.0)
@@ -512,7 +516,7 @@ DEPENDENCIES
   meta_request
   mini_magick
   money-rails (~> 1)
-  nokogiri (~> 1.8.1)
+  nokogiri (~> 1.11.4)
   oauth2
   omniauth
   paper_trail
