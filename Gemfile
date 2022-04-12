@@ -26,7 +26,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'rack-cors'
 
 gem 'money-rails', '~>1'
-gem 'nokogiri', '~>1.8.1'
+gem 'nokogiri', '~>1.13.4'
 gem "paperclip", "~> 5.0.0"
 gem 'carrierwave', '~> 1.0'
 gem 'cloudinary'
